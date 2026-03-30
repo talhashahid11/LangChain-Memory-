@@ -1,0 +1,12 @@
+from langchain.memory import ConversationBufferWindowMemory
+
+memory = ConversationBufferWindowMemory(k=3)
+
+chat = ConversationChain(
+    llm=llm,
+    memory=memory
+)
+
+chat.predict(input="Hi")
+chat.predict(input="I love AI")
+chat.predict(input="What did I just say?")
