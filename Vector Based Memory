@@ -1,0 +1,16 @@
+from langchain.memory import VectorStoreRetrieverMemory
+from langchain.vectorstores import FAISS
+from langchain.embeddings import OpenAIEmbeddings
+
+embedding = OpenAIEmbeddings()
+
+vector_db = FAISS.from_texts(
+    ["LangChain helps build LLM apps"],
+    embedding
+)
+
+retriever = vector_db.as_retriever()
+
+memory = VectorStoreRetrieverMemory(
+    retriever=retriever
+)
